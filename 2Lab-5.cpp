@@ -7,15 +7,16 @@ int height = 0;
 unsigned int number = 0;
 bool t = true, k = true;
 
+template <class Type>
 class BinarySearchTree
 {
 private:
-	unsigned int data;
+	Type data;
 	BinarySearchTree *right;
 	BinarySearchTree *left;
 
 public:
-	void Add(unsigned int new_branch, BinarySearchTree *&tree)
+	void Add(Type new_branch, BinarySearchTree *&tree)
 	{
 		if (!tree)
 		{
@@ -79,8 +80,8 @@ public:
 };
 int main(void)
 {
-	BinarySearchTree *tree = 0;
-	BinarySearchTree *ptr = 0;
+	BinarySearchTree<unsigned int> *tree = 0;
+	BinarySearchTree<unsigned int> *ptr = 0;
 	unsigned int* data;
 	unsigned int size = 0;
 
