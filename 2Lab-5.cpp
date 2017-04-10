@@ -1,0 +1,114 @@
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+int height = 0;
+unsigned int number = 0;
+bool t = true, k = true;
+
+class BinarySearchTree
+{
+private:
+	unsigned int data;
+	BinarySearchTree *right;
+	BinarySearchTree *left;
+
+public:
+	void Add(unsigned int new_branch, BinarySearchTree *&tree)
+	{
+		if (!tree)
+		{
+			tree = new BinarySearchTree;
+			tree->data = new_branch;
+			tree->right = 0;
+			tree->left = 0;
+			return;
+		}
+		else if (tree->data > new_branch) Add(new_branch, tree->right);
+		else if (tree->data < new_branch) Add(new_branch, tree->left);
+		else return;
+	}
+
+	void Search(BinarySearchTree *root)
+	{
+		if (!root) return;
+
+		if (k)
+		{
+			k = false;
+			cout << endl << "Type the number you want to find: ";
+			cin >> number;
+		}
+
+		if (root->data == number)
+		{
+			t = false;
+			cout << "Your number '" << number << "' was found!" << endl;
+		}
+
+		Search(root->right);
+		Search(root->left);
+	}
+
+	void Print(BinarySearchTree *tree)
+	{
+		if (!tree) return;
+
+		height++;
+		Print(tree->left);
+
+		for (int i = 0; i < height - 1; i++) cout << "- ";
+		cout << tree->data << endl;
+
+		Print(tree->right);
+		height--;
+
+		return;
+	}
+
+	void Free_Tree(BinarySearchTree *root)
+	{
+		if (!root) return;
+		Free_Tree(root->right);
+		Free_Tree(root->left);
+		delete root;
+		return;
+	}
+
+};
+int main(void)
+{
+	BinarySearchTree *tree = 0;
+	BinarySearchTree *ptr = 0;
+	unsigned int* data;
+	unsigned int size = 0;
+
+	cout << "Print the number of nodes: ";
+	cin >> size;
+	data = new unsigned int[size];
+
+	for (unsigned int i = 0; i < size; ++i)
+	{
+		cout << "Add node " << i + 1 << ": ";
+		cin >> data[i];
+	}
+	for (unsigned int i = 0; i < size; ++i)
+	{
+		ptr->Add(data[i], tree);
+	}
+
+	cout << endl;
+	ptr->Print(tree);
+	ptr->Search(tree);
+	if (t)
+	{
+		cout << "The number you were searching for was not found" << endl;
+	}
+
+	ptr->Free_Tree(tree);
+	delete[] data;
+	cout << endl << "Press any button to exit the program" << endl;
+	_getch();
+	return 0;
+}
