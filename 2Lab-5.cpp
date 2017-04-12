@@ -5,7 +5,7 @@ using namespace std;
 
 int height = 0;
 int number = 0;
-bool t = true, k = true;
+bool t = true, k = true, deleted = true;
 
 template <class Type>
 class BinarySearchTree
@@ -68,16 +68,47 @@ public:
 		return;
 	}
 
-	void Free_Tree(BinarySearchTree *root)
+	void Delete_branch(BinarySearchTree *tree)
 	{
-		if (!root) return;
-		Free_Tree(root->right);
-		Free_Tree(root->left);
-		delete root;
+		if (!tree) return;
+
+		if (deleted)
+		{
+			if (tree->left != 0)
+				if (tree->left->data == number)
+				{
+					deleted = false;
+					Free_Tree(tree->left);
+					tree->left = 0;
+				}
+			if (tree->right != 0)
+				if (tree->right->data == number)
+				{
+					deleted = false;
+					Free_Tree(tree->right);
+					tree->right = 0;
+				}
+		}
+
+		Delete_branch(tree->left);
+		Delete_branch(tree->right);
+
 		return;
 	}
 
+	void Free_Tree(BinarySearchTree *tree)
+	{
+		if (tree != NULL)
+		{
+			Free_Tree(tree->left);
+			Free_Tree(tree->right);
+			delete tree;
+			tree = NULL;
+		}
+		return;
+	}
 };
+
 int main(void)
 {
 	BinarySearchTree<int> *tree = 0;
@@ -102,7 +133,6 @@ int main(void)
 	{
 		cout << "Add node " << i + 1 << ": ";
 		cin >> data[i];
-
 	}
 	for (unsigned int i = 0; i < size; ++i)
 	{
@@ -116,6 +146,12 @@ int main(void)
 	{
 		cout << "The number you were searching for was not found" << endl;
 	}
+
+	cout << endl << endl << "Type the node you want to delete: ";
+	cin >> number;
+	ptr->Delete_branch(tree);
+	cout << endl << "The result of deletion: " << endl;
+	ptr->Print(tree);
 
 	ptr->Free_Tree(tree);
 	delete[] data;
