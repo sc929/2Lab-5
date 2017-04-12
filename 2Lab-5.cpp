@@ -4,7 +4,7 @@
 using namespace std;
 
 int height = 0;
-unsigned int number = 0;
+int number = 0;
 bool t = true, k = true;
 
 template <class Type>
@@ -59,7 +59,7 @@ public:
 		height++;
 		Print(tree->left);
 
-		for (int i = 0; i < height - 1; i++) cout << "- ";
+		for (int i = 0; i < height - 1; ++i) cout << "- ";
 		cout << tree->data << endl;
 
 		Print(tree->right);
@@ -80,19 +80,29 @@ public:
 };
 int main(void)
 {
-	BinarySearchTree<unsigned int> *tree = 0;
-	BinarySearchTree<unsigned int> *ptr = 0;
-	unsigned int* data;
-	unsigned int size = 0;
+	BinarySearchTree<int> *tree = 0;
+	BinarySearchTree<int> *ptr = 0;
+	int* data;
+	int size = 0;
 
 	cout << "Print the number of nodes: ";
 	cin >> size;
-	data = new unsigned int[size];
+	try
+	{
+		if (size < 0) throw size;
+	}
+	catch (int error)
+	{
+		cout << endl << "ERROR!!! The number of nodes ("<< error << ") can't be negative!" << endl;
+		return 0;
+	}
+	data = new int[size];
 
 	for (unsigned int i = 0; i < size; ++i)
 	{
 		cout << "Add node " << i + 1 << ": ";
 		cin >> data[i];
+
 	}
 	for (unsigned int i = 0; i < size; ++i)
 	{
