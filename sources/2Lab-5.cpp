@@ -1,6 +1,6 @@
 #include "2Lab-5.hpp"
 
-int BinarySearchTree::Add(unsigned int new_branch, BinarySearchTree *tree)
+int BinarySearchTree<int>::Add(unsigned int new_branch, BinarySearchTree *tree)
 {
 	if (!tree)
 	{
@@ -14,14 +14,14 @@ int BinarySearchTree::Add(unsigned int new_branch, BinarySearchTree *tree)
 	else return tree->data;
 }
 
-int BinarySearchTree::Print(int check1, BinarySearchTree *tree)
+int BinarySearchTree<int>::Print(int check1, BinarySearchTree *tree)
 {
 	if (!tree) return check1; 
 	if (tree->data == 10 ) check1 = 12;
 	
 	return check1;
 }
-int BinarySearchTree::Search(int check2, BinarySearchTree *tree)
+int BinarySearchTree<int>::Search(int check2, BinarySearchTree *tree)
 {
 	if (!tree) return check2;
 
