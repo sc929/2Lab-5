@@ -3,11 +3,11 @@
 using namespace std;
  
 
+template <class Type>
 class BinarySearchTree
 {
 
 public: 
-	BinarySearchTree *parent; 
 	unsigned int data;
 	int Add(unsigned int new_data, BinarySearchTree *&tree);
 	int Print(int check1, BinarySearchTree *tree);
