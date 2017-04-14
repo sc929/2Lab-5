@@ -6,7 +6,6 @@ Add(unsigned int new_branch, BinarySearchTree *tree)
 	{
 		BinarySearchTree<int> *tree = 0;
 		tree->data = new_branch;
-		tree->parent = tree;
 		return tree->data;
 	}
 	else if (tree->data > new_branch) Add(new_branch, tree);
