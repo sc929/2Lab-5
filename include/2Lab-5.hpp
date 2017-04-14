@@ -8,7 +8,7 @@ class BinarySearchTree
 {
 
 public: 
-	int data;
+	int data = 0;
 	int Add(int new_data, BinarySearchTree *tree);
 	int Print(int check1, BinarySearchTree *tree);
 	int Search(int check2, BinarySearchTree *tree);
