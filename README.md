@@ -21,4 +21,4 @@ Your number '3' was found!
 
 Press any button to exit the program
 
-[![Build Status](https://travis-ci.org/alexshapran-as/Laboratory-work-5-sem2.svg?branch=master)](https://travis-ci.org/alexshapran-as/Laboratory-work-5-sem2)
+[![Build Status](https://travis-ci.org/sc929/2Lab-5.svg?branch=master)](https://travis-ci.org/sc929/2Lab-5)
