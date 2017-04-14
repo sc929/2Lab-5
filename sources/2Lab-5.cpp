@@ -14,7 +14,7 @@ int BinarySearchTree::Add(unsigned int new_branch, BinarySearchTree *&tree)
 	else return tree->data;
 }
 
-int BinarySearchTree::print(int check1, BinarySearchTree *tree)
+int BinarySearchTree::Print(int check1, BinarySearchTree *tree)
 {
 	if (!tree) return check1; 
 	if (tree->data == 10 ) check1 = 12;
