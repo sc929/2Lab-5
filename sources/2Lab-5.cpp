@@ -4,7 +4,7 @@ Add(unsigned int new_branch, BinarySearchTree *tree)
 {
 	if (!tree)
 	{
-		tree = new BinarySearchTree<int>;
+		BinarySearchTree<int> *tree = 0;
 		tree->data = new_branch;
 		tree->parent = tree;
 		return tree->data;
