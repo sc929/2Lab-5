@@ -8,8 +8,8 @@ class BinarySearchTree
 {
 
 public: 
-	int data = 0;
-int Add(unsigned int new_branch, BinarySearchTree *tree)
+	Type data = 0;
+int Add(Type new_branch, BinarySearchTree *tree)
 {
 	if (!tree)
 	{
