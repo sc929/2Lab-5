@@ -1,21 +1,20 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
- 
 
 template <typename Type>
 class BinarySearchTree
 {
 
 public: 
-	Type data = 0;
+	Type data;
 int Add(Type new_branch, BinarySearchTree *tree)
 {
 	if (!tree)
 	{
-		BinarySearchTree<int> *tree = 0;
-		tree->data = new_branch;
-		return tree->data;
+		tree = new BinarySearchTree;
+ 		tree->data = new_data;		
+ 		return tree->data;
 	}
 	else if (tree->data > new_branch) Add(new_branch, tree);
 	else if (tree->data < new_branch) Add(new_branch, tree); 
