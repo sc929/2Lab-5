@@ -13,7 +13,7 @@ int Add(Type new_branch, BinarySearchTree *tree)
 	if (!tree)
 	{
 		tree = new BinarySearchTree;
- 		tree->data = new_data;		
+ 		tree->data = new_branch;		
  		return tree->data;
 	}
 	else if (tree->data > new_branch) Add(new_branch, tree);
