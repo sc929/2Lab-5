@@ -52,18 +52,28 @@ public:
 		Search(root->left);
 	}
 
-	void Print(BinarySearchTree *tree)
+	void Print(BinarySearchTree *tree, bool ptr)
 	{
 		if (!tree) return;
+		if (ptr)
+		{
+			height++;
+			Print(tree->left, true);
 
-		height++;
-		Print(tree->left);
+			for (int i = 0; i < height - 1; ++i) cout << "- ";
+			cout << tree->data << endl;
 
-		for (int i = 0; i < height - 1; ++i) cout << "- ";
-		cout << tree->data << endl;
+			Print(tree->right, true);
+			height--;
+		}
+		else
+		{
+			Print(tree->left, false);
 
-		Print(tree->right);
-		height--;
+			cout << tree->data << " ";
+
+			Print(tree->right, false);
+		}
 
 		return;
 	}
@@ -139,8 +149,10 @@ int main(void)
 		ptr->Add(data[i], tree);
 	}
 
-	cout << endl;
-	ptr->Print(tree);
+	cout << endl << size << " ";
+	ptr->Print(tree, false);
+	cout << endl << endl;
+	ptr->Print(tree, true);
 	ptr->Search(tree);
 	if (t)
 	{
@@ -151,7 +163,7 @@ int main(void)
 	cin >> number;
 	ptr->Delete_branch(tree);
 	cout << endl << "The result of deletion: " << endl;
-	ptr->Print(tree);
+	ptr->Print(tree, true);
 
 	ptr->Free_Tree(tree);
 	delete[] data;
