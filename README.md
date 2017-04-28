@@ -10,6 +10,8 @@ Add node 2: 3
 
 Add node 3: 1
 
+3 3 2 1
+
 - 3
 
 2
@@ -18,6 +20,11 @@ Add node 3: 1
 Type the number you want to find: 3
 
 Your number '3' was found!
+
+Type number you want to delete: 3
+
+2
+- 1
 
 Press any button to exit the program
 
